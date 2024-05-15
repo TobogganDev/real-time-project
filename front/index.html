@@ -7,15 +7,14 @@
 </head>
 <body>
     <div id="room_div">
-      <form id="room_form" data-dashlane-rid="e8a39741ab2ab9af" data-form-type="other">
-          <label for="room_input">Room</label>
-          <input type="text" id="room_input" data-dashlane-rid="cfcbfbdd9b591004" data-form-type="other">
-      </form>
-  </div>
+            <label for="room_input">Room</label>
+            <input type="text" id="room_input" data-dashlane-rid="cfcbfbdd9b591004" data-form-type="other">
+            <button onclick="joinRoom()">Join Room</button>
+    </div>
     <p>last message</p>
     <p class="data"></p>
     <textarea name="" id="" cols="30" rows="10"></textarea>
-    <button onclick="send()">Refresh</button>
+    <button onclick="sendMessage()">Send Message</button>
 
 </body>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
@@ -41,18 +40,18 @@
         }
     });
 
-    // Join a Room
-    room_input.addEventListener('change', (e) => {
-        socket.emit('leave', room);
-        socket.emit('join', e.target.value);
-        room = e.target.value;
-        console.log(`Connected to room : ${room ? room : 'default'}`);
-    });
-
     // Send a message
-    text.addEventListener('change', (e) => {
-        socket.emit('message', e.target.value, room);
-        console.log(`Message : ${e.target.value}\nTo room : ${room ? room : 'default'}`);
-    });
+    let sendMessage = () => {
+        socket.emit('message', text.value, room);
+        console.log(`Message : ${text.value}\nTo room : ${room ? room : 'default'}`);
+    }
+
+    // Join a Room
+    let joinRoom = () => {
+        socket.emit('leave', room);
+        socket.emit('join', room_input.value);
+        room = room_input.value;
+        console.log(`Connected to room : ${room ? room : 'default'}`);
+    }
 </script>
 </html>
