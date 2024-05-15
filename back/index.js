@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
         socket.broadcast.emit('user disconnected');
     });
-    
+
     socket.on('message', (msg, room) => {
         io.emit('message', {msg, room});
     });
@@ -36,17 +36,12 @@ io.on('connection', (socket) => {
     socket.on('join', (room) => {
         console.log('join room: ' + room);
         socket.join(room);
-        io.to(room).emit('join', room);
-    });
-
-    socket.on('leave', (room) => {
-        console.log('leave room: ' + room);
-        socket.leave(room);
-        io.to(room).emit('leave', room);
+        const balance = 100;
+        io.to(room).emit('join', room, balance);
     });
 })
 
 
-server.listen(PORT, () => {
+server.listen(PORT, () => { 
     console.log('Server ip : http://' +ip.address() +":" + PORT);
 })

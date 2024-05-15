@@ -6,52 +6,41 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="room_div">
-            <label for="room_input">Room</label>
-            <input type="text" id="room_input" data-dashlane-rid="cfcbfbdd9b591004" data-form-type="other">
-            <button onclick="joinRoom()">Join Room</button>
+    <div class="main">
+        <div class="roomContent">
+            <div id="room_div">
+                <label for="room_input">Room</label>
+                <input type="text" id="room_input" >
+                <button id="joinRoomBtn">Join Room</button>
+            </div>
+            <div id="room_chat">
+                <h1>Room Chat</h1>
+                <div class="chatMessage"></div>
+            </div>
+            <div id="room_chatInput">
+                <input type="text" id="msg_input">
+                <button id="sendMessageBtn">Send Message</button>
+            </div>
+        </div>
+        <div class="rouletteContainer">
+            
+        </div>
+        <div class="grillePlatoContainer">
+
+        </div>
+        <div class="balanceContainer">
+            <div class="balanceAmount">
+                <p class="balanceTitle">
+                    Balance :
+                </p>
+                <p class="balanceTextAmount">
+                    0
+                </p>
+            </div>
+        </div>
     </div>
-    <p>last message</p>
-    <p class="data"></p>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <button onclick="sendMessage()">Send Message</button>
 
 </body>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
-<script>
-    let i = 0;
-    let room = '';
-    let socketid = '';
-    const room_input = document.querySelector('#room_input');
-    const text = document.querySelector('textarea');
-    const socket = io('http://localhost:3000');
-    
-    socket.on('connect', () => {
-        document.querySelector('.data').innerText = '';
-    });
-    
-    socket.on('disconnect', () => {
-        document.querySelector('.data').innerText = '';
-    });
-
-    socket.on('message', (data) => {
-        if (data.room === room) {
-            document.querySelector('.data').innerText = data.msg;
-        }
-    });
-
-    // Send a message
-    let sendMessage = () => {
-        socket.emit('message', text.value, room);
-        console.log(`Message : ${text.value}\nTo room : ${room ? room : 'default'}`);
-    }
-
-    // Join a Room
-    let joinRoom = () => {
-        socket.emit('leave', room);
-        socket.emit('join', room_input.value);
-        room = room_input.value;
-        console.log(`Connected to room : ${room ? room : 'default'}`);
-    }
-</script>
+<script type="module" src="js/server.js"></script>
 </html>
