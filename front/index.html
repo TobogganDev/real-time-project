@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="room_div">
+      <form id="room_form" data-dashlane-rid="e8a39741ab2ab9af" data-form-type="other">
+          <label for="room_input">Room</label>
+          <input type="text" id="room_input" data-dashlane-rid="cfcbfbdd9b591004" data-form-type="other">
+      </form>
+  </div>
     <p>last message</p>
     <p class="data"></p>
     <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -17,30 +23,36 @@
     let i = 0;
     let room = '';
     let socketid = '';
+    const room_input = document.querySelector('#room_input');
     const text = document.querySelector('textarea');
     const socket = io('http://localhost:3000');
+    
     socket.on('connect', () => {
-        console.log('Connected');
+        document.querySelector('.data').innerText = '';
     });
-    socket.on('message', (data) => {
-        console.log(data);
-        document.querySelector('.data').innerText = data;
-    });
+    
     socket.on('disconnect', () => {
-        console.log('Disconnected');
+        document.querySelector('.data').innerText = '';
     });
 
-    let send = () => {
-        i++;
-        console.log(text.value);
-        //socket.emit('message', `Message ${i}`);
-        socket.emit('room', text.value, `Message room ${i}`);
-    }
-    text.addEventListener('change', (e) => {
+    socket.on('message', (data) => {
+        if (data.room === room) {
+            document.querySelector('.data').innerText = data.msg;
+        }
+    });
+
+    // Join a Room
+    room_input.addEventListener('change', (e) => {
         socket.emit('leave', room);
         socket.emit('join', e.target.value);
         room = e.target.value;
+        console.log(`Connected to room : ${room ? room : 'default'}`);
     });
 
+    // Send a message
+    text.addEventListener('change', (e) => {
+        socket.emit('message', e.target.value, room);
+        console.log(`Message : ${e.target.value}\nTo room : ${room ? room : 'default'}`);
+    });
 </script>
 </html>

@@ -23,9 +23,9 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
         socket.broadcast.emit('user disconnected');
     });
-    socket.on('message', (msg) => {
-        console.log('message: ' + msg);
-        io.emit('message', msg);
+    
+    socket.on('message', (msg, room) => {
+        io.emit('message', {msg, room});
     });
     
     socket.on('room', (room, msg) => {
@@ -38,6 +38,7 @@ io.on('connection', (socket) => {
         socket.join(room);
         io.to(room).emit('join', room);
     });
+
     socket.on('leave', (room) => {
         console.log('leave room: ' + room);
         socket.leave(room);
