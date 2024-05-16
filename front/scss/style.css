@@ -1,0 +1,121 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+}
+body .bottomPart {
+  padding: 24px;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+}
+body .bottomPart .grillePlatoContainer {
+  display: flex;
+  padding: 24px;
+  flex-direction: row;
+  align-items: center;
+  height: 44vh;
+  width: 66vw;
+  gap: 5px;
+}
+@media screen and (max-width: 760px) {
+  body .bottomPart .grillePlatoContainer {
+    flex-direction: column;
+  }
+}
+body .bottomPart .grillePlatoContainer .gameBoardCell {
+  width: 4vw;
+  height: 4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 1.8vw;
+  cursor: pointer;
+}
+body .bottomPart .grillePlatoContainer .gameBoardCell.zeroCell {
+  border: 1px solid #fff;
+  background-color: transparent;
+  height: 28vh;
+  width: 6vw;
+}
+body .bottomPart .grillePlatoContainer .gameBoardCell.color-b {
+  background-color: #242329;
+}
+body .bottomPart .grillePlatoContainer .gameBoardCell.color-r {
+  background-color: #FD594F;
+}
+body .bottomPart .grillePlatoContainer .gameBoardNumber {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  gap: 5px;
+}
+body .bottomPart .grillePlatoContainer .gameBoardColor {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column-reverse;
+  gap: 5px;
+  height: 28vh;
+}
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell {
+  width: 5vw;
+  height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 1.6vw;
+  cursor: pointer;
+}
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell p {
+  rotate: -90deg;
+}
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell.color-b {
+  background-color: #242329;
+}
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell.color-r {
+  background-color: #FD594F;
+}
+body .bottomPart .balanceContainer {
+  background-color: #242329;
+  padding: 24px;
+  height: 29vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+}
+body .bottomPart .balanceContainer .balanceAmount .balanceTitle {
+  font-size: 0.7vw;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #8D9B9C;
+}
+body .bottomPart .balanceContainer .balanceAmount .balanceTextAmount {
+  font-size: 1.8vw;
+  font-weight: 700;
+}
+body .bottomPart .balanceContainer .balanceChips svg {
+  width: 4vw;
+  height: 4vw;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
