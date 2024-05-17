@@ -112,10 +112,23 @@ body .bottomPart .balanceContainer .balanceAmount .balanceTextAmount {
   font-size: 1.8vw;
   font-weight: 700;
 }
-body .bottomPart .balanceContainer .balanceChips svg {
+body .bottomPart .balanceContainer .balanceChips {
+  display: flex;
+}
+body .bottomPart .balanceContainer .balanceChips .Chip-Bet {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 32px;
+  padding: 2px;
+}
+body .bottomPart .balanceContainer .balanceChips .Chip-Bet svg {
   width: 4vw;
   height: 4vw;
   cursor: pointer;
+}
+body .bottomPart .balanceContainer .balanceChips .Chip-Bet.-selected {
+  border: 0.12rem solid #FFF;
 }
 
 /*# sourceMappingURL=style.css.map */

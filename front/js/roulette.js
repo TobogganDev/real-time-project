@@ -1,8 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
-    initGameBoard();
-});
-
 let gameBoard = document.querySelector('.grillePlatoContainer');
+let chipBet = document.querySelectorAll('.Chip-Bet');
+let selectedAmountChip = document.querySelector('.Chip-Bet.-selected');
 let colorCellList = [
     'g', 
     'r', 'b', 'r', 'b', 'r', 'b', 'r', 'b', 'r', 'b', 'b', 'r',
@@ -49,7 +47,23 @@ let initGameBoard = () => {
     gameBoardColorRed.innerHTML = `<p>Red</p>`;
     gameBoardColor.appendChild(gameBoardColorRed);
     gameBoard.appendChild(gameBoardColor);
-
-
-    gameBoard.appendChild(gameBoard);
 }
+
+let selectChip = (chip) => {
+    chipBet.forEach(element => {
+        element.classList.remove('-selected');
+    });
+    chip.classList.toggle('-selected');
+    selectedAmountChip = chip.getAttribute('data-amount');
+    console.log(selectedAmountChip);
+}
+
+// Add event listener
+document.addEventListener('DOMContentLoaded', function() {
+    initGameBoard();
+});
+chipBet.forEach(element => {
+    element.addEventListener('click', () => {
+        selectChip(element);
+    });
+});
