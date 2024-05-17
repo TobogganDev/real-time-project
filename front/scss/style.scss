@@ -38,13 +38,14 @@ body {
             color: white;
             border-radius: 5px;
             position: relative;
+            cursor: pointer;
         }
         
         .zeroCell {
-            grid-row: 1 / span 6; /* Span all 6 half-height rows */
+            grid-row: 1 / span 6;
             grid-column: 1;
             border: 1px solid #fff;
-            background-color: transparent;
+            background-color: #045a00;
         }
         
         
@@ -76,12 +77,12 @@ body {
         }
                 
         #blackCell {
-            grid-row: 1 / span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+            grid-row: 1 / span 3;
             grid-column: 14;
         }
         
         #redCell {
-            grid-row: 4 / span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+            grid-row: 4 / span 3;
             grid-column: 14;
         }
 
@@ -148,6 +149,58 @@ body {
                     }
                 }
             }
+        }
+    }
+}
+
+
+.rouletteContainer {
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 10vh;
+    height: 10vh;
+    width: 33vw;
+    display: flex;
+
+    .selecteurBandeau {
+        height: 10vh;
+        width: 10vh;
+        position: absolute;
+        // margin-left: -46px;
+        // transform: translateX(20vh);
+        border: 2px solid;
+        z-index: 15;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+}
+
+.bandeauRoulette {
+    display: inline-flex;
+    animation: scroll 3s ease-in-out 1 forwards;
+
+    .gameBoardCell {
+        width: 10vh;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5vw;
+        color: white;
+
+        &.color-r {
+            background-color: #E53935;
+        }
+
+        &.color-b {
+            background-color: #242329;
+        }
+
+        &.zeroCell {
+            background-color: #045a00;
         }
     }
 }
