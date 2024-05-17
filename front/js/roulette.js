@@ -1,12 +1,13 @@
 let gameBoard = document.querySelector('.grillePlatoContainer');
-let chipBet = document.querySelectorAll('.Chip-Bet');
-let selectedAmountChip = document.querySelector('.Chip-Bet.-selected');
 let colorCellList = [
     'g', 
     'r', 'b', 'r', 'b', 'r', 'b', 'r', 'b', 'r', 'b', 'b', 'r',
     'b', 'r', 'b', 'r', 'b', 'r', 'r', 'b', 'r', 'b', 'r', 'b',
     'r', 'b', 'r', 'b', 'b', 'r', 'b', 'r', 'b', 'r', 'b', 'r',
-]
+];
+let selectedAmountChip = 0;
+let chipBet = document.querySelectorAll('.Chip-Bet');
+
 
 let initGameBoard = () => {
     // Add 0 cell
@@ -35,13 +36,13 @@ let initGameBoard = () => {
     let gameBoardColor = document.createElement('div');
     gameBoardColor.classList.add('gameBoardColor');
     let gameBoardColorBlack = document.createElement('div');
-    gameBoardColorBlack.classList.add('gameBoardColorCell');
+    gameBoardColorBlack.classList.add('gameBoardCell');
     gameBoardColorBlack.classList.add('color-b');
     gameBoardColorBlack.id = 'blackCell';
     gameBoardColorBlack.innerHTML = `<p>Black</p>`;
     gameBoardColor.appendChild(gameBoardColorBlack);
     let gameBoardColorRed = document.createElement('div');
-    gameBoardColorRed.classList.add('gameBoardColorCell');
+    gameBoardColorRed.classList.add('gameBoardCell');
     gameBoardColorRed.classList.add('color-r');
     gameBoardColorRed.id = 'redCell';
     gameBoardColorRed.innerHTML = `<p>Red</p>`;
@@ -49,21 +50,38 @@ let initGameBoard = () => {
     gameBoard.appendChild(gameBoardColor);
 }
 
+initGameBoard();
+
+let betCells = document.querySelectorAll('.gameBoardCell');
+
 let selectChip = (chip) => {
     chipBet.forEach(element => {
         element.classList.remove('-selected');
     });
     chip.classList.toggle('-selected');
-    selectedAmountChip = chip.getAttribute('data-amount');
+    selectedAmountChip = parseInt(chip.getAttribute('data-amount'));
     console.log(selectedAmountChip);
 }
 
+let betOnCell = (cell) => {
+    if (selectedAmountChip == 0) {
+        alert('Please select a chip');
+        return;
+    }
+    cell.classList.add('-bet');
+    cell.getAttribute('data-bet') ? cell.setAttribute('data-bet', parseInt(cell.getAttribute('data-bet')) + selectedAmountChip) : cell.setAttribute('data-bet', selectedAmountChip);
+    cell.querySelector('.amountOfBet') ? cell.querySelector('.amountOfBet').innerHTML = cell.getAttribute('data-bet') : cell.innerHTML += `<p class="amountOfBet">${cell.getAttribute('data-bet')}</p>`;
+    console.log(cell.querySelector('.amountOfBet'))
+}
+
 // Add event listener
-document.addEventListener('DOMContentLoaded', function() {
-    initGameBoard();
-});
 chipBet.forEach(element => {
     element.addEventListener('click', () => {
         selectChip(element);
+    });
+});
+betCells.forEach(element => {
+    element.addEventListener('click', () => {
+        betOnCell(element);
     });
 });

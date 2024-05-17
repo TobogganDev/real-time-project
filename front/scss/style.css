@@ -39,6 +39,7 @@ body .bottomPart .grillePlatoContainer .gameBoardCell {
   width: 4vw;
   height: 4vw;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -74,24 +75,42 @@ body .bottomPart .grillePlatoContainer .gameBoardColor {
   gap: 5px;
   height: 28vh;
 }
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell {
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell {
   width: 5vw;
   height: -webkit-fill-available;
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center;
   border-radius: 8px;
   font-size: 1.6vw;
   cursor: pointer;
 }
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell p {
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell p:not(.amountOfBet) {
   rotate: -90deg;
 }
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell.color-b {
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell.color-b {
   background-color: #242329;
 }
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardColorCell.color-r {
+body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell.color-r {
   background-color: #FD594F;
+}
+body .bottomPart .amountOfBet {
+  position: absolute;
+  font-weight: 700;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -40%);
+  background-color: #515151;
+  padding: 7px;
+  border-radius: 32px;
+  font-size: 0.75rem;
+  min-width: 4vh;
+  min-height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
 }
 body .bottomPart .balanceContainer {
   background-color: #242329;
