@@ -30,12 +30,12 @@ body .bottomPart .grillePlatoContainer {
 }
 body .bottomPart .gameBoardCell, body .bottomPart .gameBoardColorCell {
   display: flex;
-  position: relative;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   color: white;
   border-radius: 5px;
+  position: relative;
 }
 body .bottomPart .zeroCell {
   grid-row: 1/span 6; /* Span all 6 half-height rows */
@@ -47,7 +47,7 @@ body .bottomPart .color-r {
   background-color: #E53935;
 }
 body .bottomPart .color-b {
-  background-color: #333;
+  background-color: #242329;
 }
 body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(2) {
   grid-row: 1/span 2;
@@ -60,34 +60,18 @@ body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(3) {
 body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(4) {
   grid-row: 1/span 2;
   grid-column: 4;
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell {
-  width: 5vw;
-  height: -webkit-fill-available;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  border-radius: 8px;
-  font-size: 1.6vw;
-  cursor: pointer;
 }
 body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(5) {
   grid-row: 1/span 2;
   grid-column: 5;
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell p:not(.amountOfBet) {
-  rotate: -90deg;
 }
 body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(6) {
   grid-row: 1/span 2;
   grid-column: 6;
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell.color-b {
-  background-color: #242329;
 }
 body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(7) {
   grid-row: 1/span 2;
   grid-column: 7;
-body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell.color-r {
-  background-color: #FD594F;
 }
 body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(8) {
   grid-row: 1/span 2;
@@ -209,7 +193,7 @@ body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(37) {
   grid-row: 5/span 2;
   grid-column: 13;
 }
-body .bottomPart .gameBoardColorCell {
+body .bottomPart .gameBoardColorCell p:not(.amountOfBet) {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);

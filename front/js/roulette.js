@@ -1,7 +1,8 @@
+initGameBoard();
 let gameBoard = document.querySelector('.grillePlatoContainer');
 let selectedAmountChip = 0;
 let chipBet = document.querySelectorAll('.Chip-Bet');
-
+let betCells = document.querySelectorAll('.gameBoardCell');
 
 function initGameBoard() {
     let gameBoard = document.querySelector('.grillePlatoContainer');
@@ -30,21 +31,17 @@ function initGameBoard() {
 
     // Add black and red cells
     let gameBoardColorBlack = document.createElement('div');
-    gameBoardColorBlack.classList.add('gameBoardCell', 'color-b');
+    gameBoardColorBlack.classList.add('gameBoardCell', 'gameBoardColorCell', 'color-b');
     gameBoardColorBlack.id = 'blackCell';
     gameBoardColorBlack.innerHTML = `<p>Black</p>`;
     gameBoard.appendChild(gameBoardColorBlack);
 
     let gameBoardColorRed = document.createElement('div');
-    gameBoardColorRed.classList.add('gameBoardCell', 'color-r');
+    gameBoardColorRed.classList.add('gameBoardCell', 'gameBoardColorCell', 'color-r');
     gameBoardColorRed.id = 'redCell';
     gameBoardColorRed.innerHTML = `<p>Red</p>`;
     gameBoard.appendChild(gameBoardColorRed);
 }
-
-initGameBoard();
-
-let betCells = document.querySelectorAll('.gameBoardCell');
 
 let selectChip = (chip) => {
     chipBet.forEach(element => {
@@ -67,9 +64,6 @@ let betOnCell = (cell) => {
 }
 
 // Add event listener
-document.addEventListener('DOMContentLoaded', function() {
-    initGameBoard();
-});
 chipBet.forEach(element => {
     element.addEventListener('click', () => {
         selectChip(element);
@@ -80,3 +74,4 @@ betCells.forEach(element => {
         betOnCell(element);
     });
 });
+console.log(betCells);
