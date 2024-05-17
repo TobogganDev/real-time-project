@@ -37,6 +37,7 @@ body {
             font-size: 18px;
             color: white;
             border-radius: 5px;
+            position: relative;
         }
         
         .zeroCell {
@@ -52,7 +53,7 @@ body {
         }
         
         .color-b {
-            background-color: #333;
+            background-color: #242329;
         }
         
         @for $i from 1 through 36 {
@@ -61,18 +62,19 @@ body {
             @if $col == 0 {
                 $col: 12;
             }
+
             .grillePlatoContainer > .gameBoardCell:nth-child(#{$i + 1}) {
                 grid-row: #{$row * 2 - 1} / span 2;
                 grid-column: #{$col + 1};
             }
         }
-        
-        .gameBoardColorCell {
+
+        .gameBoardColorCell p:not(.amountOfBet){
             writing-mode: vertical-rl;
             text-orientation: mixed;
             transform: rotate(180deg);
         }
-        
+                
         #blackCell {
             grid-row: 1 / span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
             grid-column: 14;
@@ -82,7 +84,25 @@ body {
             grid-row: 4 / span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
             grid-column: 14;
         }
-        
+
+        .amountOfBet {
+            position: absolute;
+            font-weight: 700;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -40%);
+            background-color: #515151;
+            padding: 7px;
+            border-radius: 32px;
+            font-size: 0.75rem;
+            min-width: 4vh;
+            min-height: 4vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
         .balanceContainer {
             background-color: #242329;
             padding: 24px;
@@ -127,8 +147,6 @@ body {
                         border: 0.12rem solid #FFF;
                     }
                 }
-
-
             }
         }
     }
