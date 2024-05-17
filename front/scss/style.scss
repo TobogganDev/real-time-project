@@ -12,7 +12,7 @@ body {
     color: #fff;
     height: 100vh;
     width: 100vw;
-
+    
     .bottomPart {
         padding: 24px;
         position: fixed;
@@ -21,19 +21,49 @@ body {
         height: 50vh;
         display: flex;
         align-items: center;
-
+        justify-content: space-between;
+        
         .grillePlatoContainer {
+            display: grid;
+            grid-template-columns: 50px repeat(12, 50px) 50px;
+            grid-template-rows: repeat(6, 25px); /* Each row is now half the original height */
+            gap: 8px;
+        }
+        
+        .gameBoardCell, .gameBoardColorCell {
             display: flex;
-            padding: 24px;
-            flex-direction: row;
+            justify-content: center;
             align-items: center;
-            height: 44vh;
-            width: 66vw;
-            gap: 5px;
-
-            @media screen and (max-width: 760px) {
-                flex-direction: column;
+            font-size: 18px;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .zeroCell {
+            grid-row: 1 / span 6; /* Span all 6 half-height rows */
+            grid-column: 1;
+            border: 1px solid #fff;
+            background-color: transparent;
+        }
+        
+        
+        .color-r {
+            background-color: #E53935;
+        }
+        
+        .color-b {
+            background-color: #333;
+        }
+        
+        @for $i from 1 through 36 {
+            $row: ceil($i / 12);
+            $col: $i % 12;
+            @if $col == 0 {
+                $col: 12;
             }
+            .grillePlatoContainer > .gameBoardCell:nth-child(#{$i + 1}) {
+                grid-row: #{$row * 2 - 1} / span 2;
+                grid-column: #{$col + 1};
 
             .gameBoardCell {
                 width: 4vw;
@@ -61,6 +91,7 @@ body {
                     background-color: #FD594F;
                 }
             }
+        }
 
             .gameBoardNumber {
                 display: flex;
@@ -95,16 +126,22 @@ body {
                         rotate: -90deg;
                     }
         
-                    &.color-b {
-                        background-color: #242329;
-                    }
-        
-                    &.color-r {
-                        background-color: #FD594F;
-                    }
-                }
-            }
+        .gameBoardColorCell {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
         }
+        
+        #blackCell {
+            grid-row: 1 / span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+            grid-column: 14;
+        }
+        
+        #redCell {
+            grid-row: 4 / span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+            grid-column: 14;
+        }
+        
 
         .amountOfBet {
             position: absolute;
@@ -132,7 +169,7 @@ body {
             flex-direction: column;
             justify-content: space-between;
             border-radius: 16px;
-
+            
             .balanceAmount {
                 .balanceTitle {
                     font-size: 0.7vw;
@@ -140,13 +177,13 @@ body {
                     margin-bottom: 8px;
                     color: #8D9B9C;
                 }
-
+                
                 .balanceTextAmount {
                     font-size: 1.8vw;
                     font-weight: 700;
                 }
             }
-
+            
             .balanceChips {
                 display: flex;
 

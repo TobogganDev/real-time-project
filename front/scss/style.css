@@ -20,61 +20,46 @@ body .bottomPart {
   height: 50vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 body .bottomPart .grillePlatoContainer {
-  display: flex;
-  padding: 24px;
-  flex-direction: row;
-  align-items: center;
-  height: 44vh;
-  width: 66vw;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 50px repeat(12, 50px) 50px;
+  grid-template-rows: repeat(6, 25px); /* Each row is now half the original height */
+  gap: 8px;
 }
-@media screen and (max-width: 760px) {
-  body .bottomPart .grillePlatoContainer {
-    flex-direction: column;
-  }
-}
-body .bottomPart .grillePlatoContainer .gameBoardCell {
-  width: 4vw;
-  height: 4vw;
+body .bottomPart .gameBoardCell, body .bottomPart .gameBoardColorCell {
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  font-size: 1.8vw;
-  cursor: pointer;
+  font-size: 18px;
+  color: white;
+  border-radius: 5px;
 }
-body .bottomPart .grillePlatoContainer .gameBoardCell.zeroCell {
+body .bottomPart .zeroCell {
+  grid-row: 1/span 6; /* Span all 6 half-height rows */
+  grid-column: 1;
   border: 1px solid #fff;
   background-color: transparent;
-  height: 28vh;
-  width: 6vw;
 }
-body .bottomPart .grillePlatoContainer .gameBoardCell.color-b {
-  background-color: #242329;
+body .bottomPart .color-r {
+  background-color: #E53935;
 }
-body .bottomPart .grillePlatoContainer .gameBoardCell.color-r {
-  background-color: #FD594F;
+body .bottomPart .color-b {
+  background-color: #333;
 }
-body .bottomPart .grillePlatoContainer .gameBoardNumber {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column-reverse;
-  align-items: center;
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;
-  gap: 5px;
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(2) {
+  grid-row: 1/span 2;
+  grid-column: 2;
 }
-body .bottomPart .grillePlatoContainer .gameBoardColor {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column-reverse;
-  gap: 5px;
-  height: 28vh;
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(3) {
+  grid-row: 1/span 2;
+  grid-column: 3;
 }
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(4) {
+  grid-row: 1/span 2;
+  grid-column: 4;
 body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell {
   width: 5vw;
   height: -webkit-fill-available;
@@ -86,14 +71,156 @@ body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell {
   font-size: 1.6vw;
   cursor: pointer;
 }
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(5) {
+  grid-row: 1/span 2;
+  grid-column: 5;
 body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell p:not(.amountOfBet) {
   rotate: -90deg;
 }
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(6) {
+  grid-row: 1/span 2;
+  grid-column: 6;
 body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell.color-b {
   background-color: #242329;
 }
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(7) {
+  grid-row: 1/span 2;
+  grid-column: 7;
 body .bottomPart .grillePlatoContainer .gameBoardColor .gameBoardCell.color-r {
   background-color: #FD594F;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(8) {
+  grid-row: 1/span 2;
+  grid-column: 8;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(9) {
+  grid-row: 1/span 2;
+  grid-column: 9;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(10) {
+  grid-row: 1/span 2;
+  grid-column: 10;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(11) {
+  grid-row: 1/span 2;
+  grid-column: 11;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(12) {
+  grid-row: 1/span 2;
+  grid-column: 12;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(13) {
+  grid-row: 1/span 2;
+  grid-column: 13;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(14) {
+  grid-row: 3/span 2;
+  grid-column: 2;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(15) {
+  grid-row: 3/span 2;
+  grid-column: 3;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(16) {
+  grid-row: 3/span 2;
+  grid-column: 4;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(17) {
+  grid-row: 3/span 2;
+  grid-column: 5;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(18) {
+  grid-row: 3/span 2;
+  grid-column: 6;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(19) {
+  grid-row: 3/span 2;
+  grid-column: 7;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(20) {
+  grid-row: 3/span 2;
+  grid-column: 8;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(21) {
+  grid-row: 3/span 2;
+  grid-column: 9;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(22) {
+  grid-row: 3/span 2;
+  grid-column: 10;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(23) {
+  grid-row: 3/span 2;
+  grid-column: 11;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(24) {
+  grid-row: 3/span 2;
+  grid-column: 12;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(25) {
+  grid-row: 3/span 2;
+  grid-column: 13;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(26) {
+  grid-row: 5/span 2;
+  grid-column: 2;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(27) {
+  grid-row: 5/span 2;
+  grid-column: 3;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(28) {
+  grid-row: 5/span 2;
+  grid-column: 4;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(29) {
+  grid-row: 5/span 2;
+  grid-column: 5;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(30) {
+  grid-row: 5/span 2;
+  grid-column: 6;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(31) {
+  grid-row: 5/span 2;
+  grid-column: 7;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(32) {
+  grid-row: 5/span 2;
+  grid-column: 8;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(33) {
+  grid-row: 5/span 2;
+  grid-column: 9;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(34) {
+  grid-row: 5/span 2;
+  grid-column: 10;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(35) {
+  grid-row: 5/span 2;
+  grid-column: 11;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(36) {
+  grid-row: 5/span 2;
+  grid-column: 12;
+}
+body .bottomPart .grillePlatoContainer > .gameBoardCell:nth-child(37) {
+  grid-row: 5/span 2;
+  grid-column: 13;
+}
+body .bottomPart .gameBoardColorCell {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+body .bottomPart #blackCell {
+  grid-row: 1/span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+  grid-column: 14;
+}
+body .bottomPart #redCell {
+  grid-row: 4/span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+  grid-column: 14;
 }
 body .bottomPart .amountOfBet {
   position: absolute;
