@@ -36,12 +36,13 @@ body .bottomPart .gameBoardCell, body .bottomPart .gameBoardColorCell {
   color: white;
   border-radius: 5px;
   position: relative;
+  cursor: pointer;
 }
 body .bottomPart .zeroCell {
-  grid-row: 1/span 6; /* Span all 6 half-height rows */
+  grid-row: 1/span 6;
   grid-column: 1;
   border: 1px solid #fff;
-  background-color: transparent;
+  background-color: #045a00;
 }
 body .bottomPart .color-r {
   background-color: #E53935;
@@ -199,11 +200,11 @@ body .bottomPart .gameBoardColorCell p:not(.amountOfBet) {
   transform: rotate(180deg);
 }
 body .bottomPart #blackCell {
-  grid-row: 1/span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+  grid-row: 1/span 3;
   grid-column: 14;
 }
 body .bottomPart #redCell {
-  grid-row: 4/span 3; /* Span 3 half-height rows, equivalent to 1.5 full rows */
+  grid-row: 4/span 3;
   grid-column: 14;
 }
 body .bottomPart .amountOfBet {
@@ -259,6 +260,50 @@ body .bottomPart .balanceContainer .balanceChips .Chip-Bet svg {
 }
 body .bottomPart .balanceContainer .balanceChips .Chip-Bet.-selected {
   border: 0.12rem solid #FFF;
+}
+
+.rouletteContainer {
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  height: 10vh;
+  width: 33vw;
+  display: flex;
+}
+.rouletteContainer .selecteurBandeau {
+  height: 10vh;
+  width: 10vh;
+  position: absolute;
+  border: 2px solid;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.bandeauRoulette {
+  display: inline-flex;
+  animation: scroll 3s ease-in-out 1 forwards;
+}
+.bandeauRoulette .gameBoardCell {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+  color: white;
+}
+.bandeauRoulette .gameBoardCell.color-r {
+  background-color: #E53935;
+}
+.bandeauRoulette .gameBoardCell.color-b {
+  background-color: #242329;
+}
+.bandeauRoulette .gameBoardCell.zeroCell {
+  background-color: #045a00;
 }
 
 /*# sourceMappingURL=style.css.map */
