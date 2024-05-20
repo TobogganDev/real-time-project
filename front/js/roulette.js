@@ -6,7 +6,7 @@ let balanceAmount = 0;
 const room_input = document.getElementById('room_input');
 const text = document.getElementById('msg_input');
 const balanceArea = document.getElementsByClassName('balanceTextAmount')[0];
-const socket = io('http://192.168.1.76:3000');
+const socket = io('https://real-time-project.onrender.com');
 
 socket.on('connect', () => {
     document.querySelector('.chatMessage').innerHTML = '';
