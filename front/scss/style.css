@@ -17,9 +17,7 @@ body .bottomPart {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 50vh;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 body .bottomPart .grillePlatoContainer {
@@ -227,7 +225,6 @@ body .bottomPart .amountOfBet {
 body .bottomPart .balanceContainer {
   background-color: #242329;
   padding: 24px;
-  height: 29vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -261,6 +258,84 @@ body .bottomPart .balanceContainer .balanceChips .Chip-Bet svg {
 body .bottomPart .balanceContainer .balanceChips .Chip-Bet.-selected {
   border: 0.12rem solid #FFF;
 }
+body .roomContent {
+  margin: 24px;
+  width: 20vw;
+}
+body .roomContent #room_div {
+  padding: 24px;
+  margin-bottom: 16px;
+  background: #242329;
+  border-radius: 16px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+body .roomContent #room_div label {
+  font-size: 0.7vw;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+body .roomContent #room_div button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 1vw;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 99px;
+}
+body .roomContent .chat-container {
+  padding: 24px;
+  background-color: #242329;
+  border-radius: 16px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  position: relative;
+}
+body .roomContent .chat-container #room_chat span {
+  font-size: 0.7vw;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #8D9B9C;
+  text-transform: uppercase;
+}
+body .roomContent .chat-container .chatMessageText {
+  padding: 6px 0;
+  border-bottom: 1px solid #8D9B9C;
+}
+body .roomContent .chat-container #room_chatInput {
+  margin-top: auto;
+  border-bottom: 1px solid #8D9B9C;
+  padding-bottom: 4px;
+  display: flex;
+  gap: 4px;
+  background-color: #242329;
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  width: calc(100% - 48px);
+}
+body .roomContent .chat-container #room_chatInput input {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1vw;
+  padding: 4px;
+  flex-grow: 1;
+}
+body .roomContent .chat-container #room_chatInput button {
+  background-color: #515151;
+  border: none;
+  color: #fff;
+  font-size: 1vw;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 99px;
+}
 
 .rouletteContainer {
   overflow: hidden;
@@ -281,6 +356,24 @@ body .bottomPart .balanceContainer .balanceChips .Chip-Bet.-selected {
   justify-content: center;
   align-items: center;
   color: white;
+}
+.rouletteContainer .gameBoardCell {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+  color: white;
+}
+.rouletteContainer .gameBoardCell.color-r {
+  background-color: #E53935;
+}
+.rouletteContainer .gameBoardCell.color-b {
+  background-color: #242329;
+}
+.rouletteContainer .gameBoardCell.zeroCell {
+  background-color: #045a00;
 }
 
 .bandeauRoulette {

@@ -25,6 +25,16 @@ let colorCellList = [
     'r', 'b', 'r', 'b', 'b', 'r', 'b', 'r', 'b', 'r', 'b', 'r',
 ];
 
+let player1 = {
+    id: '',
+    name: 'Player 1',
+}
+
+let player2 = {
+    id: '',
+    name: 'Player 2',
+}
+
 io.on('connection', (socket) => {
     console.log('a user connected');
     socket.broadcast.emit('user connected');
@@ -48,8 +58,16 @@ io.on('connection', (socket) => {
 
         console.log(io.sockets.adapter.rooms.get(room));
         const roomClients = io.sockets.adapter.rooms.get(room);
+        const clients = Array.from(roomClients);
+
         
         if (roomClients.size === 2) {
+            player1.id = clients[0];
+            player2.id = clients[1];
+
+            io.to(player1.id).emit('playerName', player1);
+            io.to(player2.id).emit('playerName', player2);
+
             console.log('start')
             io.to(room).emit('roomStatus', 'Start game');
             intervalRef = setInterval(() => {
@@ -67,6 +85,12 @@ io.on('connection', (socket) => {
         socket.leave(room);
         io.to(room).emit('leave', room);
         clearInterval(intervalRef); // Clear the interval when the socket leaves
+    });
+
+    socket.on('playerWon', (data) => {
+        // Broadcast the win notification to all clients
+        const message = data.playerId === player1.id ? 'Player 1 wins' : 'Player 2 wins';
+        io.emit('winNotification', message);
     });
 
     // Function to generate a winning number and color

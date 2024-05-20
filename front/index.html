@@ -8,23 +8,27 @@
 </head>
 <body>
     <div class="roomContent">
+        <div style="margin-bottom: 16px; padding: 24px; background-color: #242329; border-radius: 16px;">
+            You are : <p id="playerNameDisplay"></p>
+        </div>
         <div id="room_div">
             <label for="room_input">Room</label>
             <input type="text" id="room_input" >
             <button id="joinRoomBtn">Join Room</button>
         </div>
-        <div class="">
+        <div class="chat-container">
             <div id="room_chat">
-                <h1>Room Chat</h1>
+                <span>Room Chat</span>
                 <div class="chatMessage"></div>
             </div>
-            <div id="room_chatInput">
+            <!-- <div id="room_chatInput">
                 <input type="text" id="msg_input">
-                <button id="sendMessageBtn">Send Message</button>
-            </div>
+                <button id="sendMessageBtn">Send</button>
+            </div> -->
         </div>
     </div>
     <div class="rouletteContainer">
+        <div id="winningNumberDisplay"></div>
         <!-- JS Generated -->
         <div class="selecteurBandeau">
             
@@ -43,6 +47,8 @@
                     2,000 $
                 </p>
             </div>
+            <button id="resetBetsBtn">Reset Bets</button>
+
             <div class="balanceChips">
                 <!-- 1$ -->
                 <div class="Chip-Bet OneDollarChip" data-amount="1">
@@ -271,6 +277,6 @@
     </div>
 </body>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
-<script type="module" src="js/server.js"></script>
+<!-- <script type="module" src="js/server.js"></script> -->
 <script src="js/roulette.js"></script>
 </html>
